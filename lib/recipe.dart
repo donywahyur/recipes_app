@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_app/dummy_data.dart';
 import 'package:recipes_app/models/category.dart';
-import 'package:recipes_app/models/food.dart';
 
 class Recipe extends StatefulWidget {
   const Recipe({super.key});
@@ -37,64 +36,71 @@ class _RecipeState extends State<Recipe> {
             padding: EdgeInsets.all(10),
             itemCount: food.length,
             itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(bottom: 20),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 10),
-                      width: double.infinity,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(food[index].imageUrl),
-                          fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: () => {
+                  Navigator.pushNamed(context, '/detail-food',
+                      arguments: food[index])
+                },
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: NetworkImage(food[index].imageUrl),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            food[index].title,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.timer_outlined, color: Colors.red),
-                                  Text(
-                                    '${food[index].duration} menit',
-                                    style: TextStyle(color: Colors.red),
-                                  ),
-                                ],
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              food[index].title,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.favorite_border_outlined,
-                                    color: Colors.red,
-                                    size: 30,
-                                  ))
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                            ),
+                            SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.timer_outlined,
+                                        color: Colors.red),
+                                    Text(
+                                      '${food[index].duration} menit',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ],
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.favorite_border_outlined,
+                                      color: Colors.red,
+                                      size: 30,
+                                    ))
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               );
             }));
