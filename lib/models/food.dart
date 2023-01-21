@@ -5,6 +5,7 @@ class Food {
   final List<String> ingredients;
   final int duration;
   final String imageUrl;
+  bool favorite = false;
 
   Food({
     required this.id,
@@ -13,6 +14,7 @@ class Food {
     required this.ingredients,
     required this.duration,
     required this.imageUrl,
+    this.favorite = false,
   });
 
   factory Food.fromJson(Map<String, dynamic> json) {

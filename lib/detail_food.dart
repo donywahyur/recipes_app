@@ -43,25 +43,33 @@ class _DetailFoodState extends State<DetailFood> {
               Center(
                 child: Text(
                   detail.title,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Ingridients',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   Text('${detail.ingredients.length} items'),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return Text('${detail.ingredients[index]}');
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: 15),
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: const EdgeInsets.all(20),
+                      child: Text(detail.ingredients[index]),
+                    );
                   },
                   itemCount: detail.ingredients.length,
                 ),

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:recipes_app/models/category.dart';
-import 'package:recipes_app/recipe.dart';
 
 class CategoryItem extends StatefulWidget {
   final Category category;

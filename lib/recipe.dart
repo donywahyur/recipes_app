@@ -88,10 +88,18 @@ class _RecipeState extends State<Recipe> {
                                   ],
                                 ),
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        food[index].favorite =
+                                            !food[index].favorite;
+                                      });
+                                      print(food[index].favorite);
+                                    },
                                     icon: Icon(
-                                      Icons.favorite_border_outlined,
-                                      color: Colors.red,
+                                      food[index].favorite
+                                          ? Icons.favorite
+                                          : Icons.favorite_border_outlined,
+                                      color: Colors.redAccent,
                                       size: 30,
                                     ))
                               ],
